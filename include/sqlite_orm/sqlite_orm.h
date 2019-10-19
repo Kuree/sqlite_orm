@@ -7314,7 +7314,7 @@ namespace sqlite_orm {
             
             void foreign_keys(sqlite3 *db, bool value) {
                 std::stringstream ss;
-                ss << "PRAGMA foreign_keys = " << value;
+                ss << "PRAGMA foreign_keys = " << (value? '1': '0');
                 auto query = ss.str();
                 auto rc = sqlite3_exec(db, query.c_str(), nullptr, nullptr, nullptr);
                 if(rc != SQLITE_OK) {
